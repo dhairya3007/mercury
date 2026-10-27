@@ -1,0 +1,342 @@
+/* ==========================================================================
+   Mercury Infotech - Official Footer Styling (Refined Proportionate Scale)
+   ========================================================================== */
+
+.site-footer-wrapper {
+  position: relative;
+  background-color: #121215;
+  color: var(--color-white);
+  margin-top: 55px;
+  padding-top: 0;
+  z-index: 10;
+}
+
+/* Floating Newsletter Banner */
+.footer-newsletter-section {
+  position: relative;
+  transform: translateY(-50%);
+  margin-bottom: -30px;
+  z-index: 20;
+}
+
+.subscribe-newsletter-card {
+  background: #18171C url('/assets/images/hero-banner.png') center/cover no-repeat;
+  background-blend-mode: overlay;
+  background-color: #1A1920;
+  border-radius: 12px;
+  padding: 30px 42px;
+  color: var(--color-white);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.subscribe-newsletter-card .grid {
+  align-items: center;
+}
+
+.subscribe-tag {
+  color: var(--color-primary);
+  font-size: 0.82rem;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 5px;
+  letter-spacing: 0.5px;
+}
+
+.subscribe-heading-white {
+  font-size: clamp(1.25rem, 1.8vw, 1.55rem);
+  font-weight: 700;
+  color: var(--color-white);
+  margin: 0;
+  line-height: 1.2;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.subscribe-heading-outline {
+  font-size: clamp(1.25rem, 1.8vw, 1.55rem);
+  font-weight: 700;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.4);
+  margin: 0;
+  line-height: 1.2;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.subscribe-form-box form {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.subscribe-input-field {
+  flex-grow: 1;
+  padding: 12px 18px;
+  background-color: #111013;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  color: var(--color-white);
+  font-family: var(--font-family-base);
+  font-size: 0.88rem;
+  outline: none;
+  transition: border-color var(--transition-fast);
+}
+
+.subscribe-input-field:focus {
+  border-color: var(--color-primary);
+}
+
+.subscribe-submit-btn {
+  padding: 12px 28px;
+  background-color: var(--color-primary);
+  color: #121215;
+  font-family: var(--font-family-base);
+  font-weight: 700;
+  font-size: 0.85rem;
+  border: none;
+  border-radius: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.subscribe-submit-btn:hover {
+  background-color: var(--color-primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(117, 218, 180, 0.3);
+}
+
+/* Footer Top Columns */
+.footer-main-columns {
+  padding-top: 25px;
+  padding-bottom: 45px;
+}
+
+.footer-col-widget h4 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--color-white);
+  margin-bottom: 18px;
+}
+
+.footer-col-widget .footer-brand-logo {
+  margin-bottom: 24px;
+  display: inline-block;
+}
+
+.footer-col-widget .footer-brand-logo img {
+  height: 120px;
+  max-width: 250px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .footer-col-widget .footer-brand-logo img {
+    height: 90px;
+  }
+}
+
+.footer-about-blurb {
+  color: #9A99A2;
+  font-size: 0.86rem;
+  line-height: 1.65;
+  max-width: 300px;
+  margin: 0;
+}
+
+/* Footer Link Menus */
+.footer-nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.footer-nav-list li a {
+  color: #B5B4BD;
+  font-size: 0.86rem;
+  transition: all var(--transition-fast);
+  display: inline-block;
+}
+
+.footer-nav-list li a:hover {
+  color: var(--color-primary);
+  transform: translateX(3px);
+}
+
+/* Footer Contacts Column */
+.footer-contact-entry {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.footer-contact-entry i {
+  color: var(--color-primary);
+  font-size: 0.95rem;
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+
+.footer-contact-entry a,
+.footer-contact-entry span {
+  color: #B5B4BD;
+  font-size: 0.86rem;
+  line-height: 1.55;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.footer-contact-entry a:hover {
+  color: var(--color-primary);
+}
+
+/* Social icons under contacts */
+.footer-social-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.footer-social-row a {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #B5B4BD;
+  font-size: 0.85rem;
+  transition: all var(--transition-fast);
+}
+
+.footer-social-row a:hover {
+  background-color: var(--color-primary);
+  color: #121215;
+  border-color: var(--color-primary);
+  transform: translateY(-2px);
+}
+
+/* Footer Bottom Sub-Bar */
+.footer-sub-bar {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 18px 0 24px 0;
+}
+
+.footer-sub-bar-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.footer-sub-copy {
+  color: #B5B4BD;
+  font-size: 0.88rem;
+}
+
+.footer-sub-copy p {
+  margin: 0;
+  color: #B5B4BD !important;
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+.footer-sub-copy p strong {
+  color: #FFFFFF !important;
+  font-weight: 700;
+}
+
+.footer-sub-copy small {
+  display: block;
+  margin-top: 4px;
+  color: #8E8D96 !important;
+  font-size: 0.8rem;
+}
+
+.footer-legal-inline {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-legal-inline li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.footer-legal-inline li:not(:last-child)::after {
+  content: "|";
+  color: #717077;
+  font-size: 0.8rem;
+}
+
+.footer-legal-inline a {
+  color: #B5B4BD;
+  font-size: 0.85rem;
+  transition: color var(--transition-fast);
+}
+
+.footer-legal-inline a:hover {
+  color: var(--color-primary);
+}
+
+@media (max-width: 991px) {
+  .site-footer-wrapper {
+    margin-top: 50px;
+  }
+  .subscribe-newsletter-card {
+    padding: 24px 18px;
+  }
+  .subscribe-form-box form {
+    flex-direction: column;
+    margin-top: 14px;
+    gap: 10px;
+  }
+  .subscribe-input-field,
+  .subscribe-submit-btn {
+    width: 100%;
+  }
+  .footer-sub-bar-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .site-footer-wrapper {
+    margin-top: 45px;
+  }
+  .footer-main-columns {
+    padding-top: 10px;
+    padding-bottom: 24px;
+  }
+  .footer-col-widget {
+    margin-bottom: 20px;
+  }
+  .footer-col-widget h4 {
+    margin-bottom: 12px;
+  }
+  .footer-col-widget .footer-brand-logo {
+    margin-bottom: 14px;
+  }
+  .footer-sub-bar {
+    padding: 16px 0;
+  }
+}

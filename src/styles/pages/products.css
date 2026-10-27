@@ -1,0 +1,119 @@
+/* Products Hub & Product Detail Styles */
+.product-detail-area {
+  padding: 70px 0;
+}
+
+.product-detail-wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.product-meta-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.product-meta-header span {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--color-primary);
+}
+
+.product-main-thumb {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  margin-bottom: 40px;
+  background-color: #F8F9FA;
+  border: 1px solid var(--color-border-subtle);
+}
+
+.product-main-thumb img {
+  width: 100%;
+  max-height: 480px;
+  object-fit: cover;
+}
+
+.product-quote-banner {
+  background-color: #F4FBF8;
+  border-left: 4px solid var(--color-primary);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: 30px;
+  margin: 40px 0;
+  display: flex;
+  gap: 20px;
+}
+
+.product-quote-banner i {
+  font-size: 2rem;
+  color: var(--color-primary);
+  opacity: 0.8;
+  flex-shrink: 0;
+}
+
+.product-quote-banner p {
+  font-size: 1.15rem;
+  font-style: italic;
+  font-weight: 500;
+  color: var(--color-dark-bg);
+  line-height: 1.8;
+  margin-bottom: 0;
+}
+
+.offerings-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+  margin: 30px 0;
+}
+
+@media (max-width: 991px) {
+  .product-detail-area {
+    padding: 45px 0;
+  }
+  .product-main-thumb {
+    margin-bottom: 25px;
+  }
+  .product-quote-banner {
+    padding: 22px;
+    margin: 25px 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .product-detail-area {
+    padding: 32px 0;
+  }
+  .product-quote-banner p {
+    font-size: 1rem;
+  }
+  .offerings-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin: 20px 0;
+  }
+}
+
+.offering-card {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 25px 20px;
+  box-shadow: var(--shadow-sm);
+}
+
+.offering-card h5 {
+  color: var(--color-dark-bg);
+  font-size: 1.15rem;
+  margin-bottom: 10px;
+}
+
+.offering-card p {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 0;
+}

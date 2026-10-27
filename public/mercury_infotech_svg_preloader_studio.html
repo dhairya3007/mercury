@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mercury Infotech — Responsive SVG Preloader Studio</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Jost (for geometric Futura-like logo text) & Inter (for UI controls) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Jost:wght@500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --mi-blue: #0048BA;
+      --mi-red: #EE1D23;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f1f5f9;
+      overflow-x: hidden;
+    }
+
+    /* ==========================================================
+       CORE MERCURY INFOTECH SVG PRELOADER STYLES & ANIMATIONS
+       Exact 1536x1024 Coordinate System
+       ========================================================== */
+    .mi-svg-container {
+      width: clamp(220px, 46vw, 520px);
+      height: auto;
+      display: block;
+      user-select: none;
+    }
+
+    /* Viewport Frame Overrides when testing Tablet / Mobile */
+    .viewport-tablet .mi-svg-container {
+      width: 340px;
+    }
+    .viewport-mobile .mi-svg-container {
+      width: 240px;
+    }
+
+    .mi-blue-shape {
+      fill: #0048BA;
+    }
+
+    .mi-red-stroke {
+      fill: none;
+      stroke: #EE1D23;
+      stroke-width: 17;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .mi-logo-text {
+      font-family: 'Jost', 'Futura', 'Tw Cen MT', sans-serif;
+      font-weight: 500;
+      font-size: 98px;
+      fill: #0048BA;
+      letter-spacing: 0.5px;
+    }
+
+    /* ----------------------------------------------------------
+       STYLE 1: Signature Path Draw & Reveal
+       ---------------------------------------------------------- */
+    .style-1 .mi-m-shape {
+      transform-box: fill-box;
+      transform-origin: center bottom;
+      animation: s1RiseM 2.8s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+    }
+
+    .style-1 .mi-i-shape {
+      transform-box: fill-box;
+      transform-origin: center bottom;
+      animation: s1RiseI 2.8s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+    }
+
+    .style-1 .mi-red-body {
+      stroke-dasharray: 900;
+      stroke-dashoffset: 900;
+      animation: s1DrawBody 2.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    }
+
+    .style-1 .mi-red-arch {
+      stroke-dasharray: 160;
+      stroke-dashoffset: 160;
+      animation: s1DrawArch 2.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    }
+
+    .style-1 .mi-red-head-left {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: s1PopHeadLeft 2.8s cubic-bezier(0.34, 1.56, 0.64, 1) infinite;
+    }
+
+    .style-1 .mi-red-head-right {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: s1PopHeadRight 2.8s cubic-bezier(0.34, 1.56, 0.64, 1) infinite;
+    }
+
+    .style-1 .mi-ray {
+      stroke-dasharray: 70;
+      stroke-dashoffset: 70;
+      animation: s1ShootRay 2.8s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+    }
+    .style-1 .mi-ray-1 { animation-delay: 0.04s; }
+    .style-1 .mi-ray-2 { animation-delay: 0.08s; }
+    .style-1 .mi-ray-3 { animation-delay: 0.12s; }
+    .style-1 .mi-ray-4 { animation-delay: 0.08s; }
+    .style-1 .mi-ray-5 { animation-delay: 0.04s; }
+
+    .style-1 .mi-logo-text {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: s1FadeText 2.8s ease-in-out infinite;
+    }
+
+    @keyframes s1RiseM {
+      0% { opacity: 0; transform: translateY(24px) scaleY(0.92); }
+      18%, 85% { opacity: 1; transform: translateY(0) scaleY(1); }
+      96%, 100% { opacity: 0; transform: translateY(-6px) scaleY(1); }
+    }
+
+    @keyframes s1RiseI {
+      0%, 6% { opacity: 0; transform: translateY(24px) scaleY(0.92); }
+      24%, 85% { opacity: 1; transform: translateY(0) scaleY(1); }
+      96%, 100% { opacity: 0; transform: translateY(-6px) scaleY(1); }
+    }
+
+    @keyframes s1DrawArch {
+      0%, 16% { stroke-dashoffset: 160; opacity: 0; }
+      20% { opacity: 1; }
+      42%, 85% { stroke-dashoffset: 0; opacity: 1; }
+      96%, 100% { stroke-dashoffset: 0; opacity: 0; }
+    }
+
+    @keyframes s1DrawBody {
+      0%, 18% { stroke-dashoffset: 900; opacity: 0; }
+      22% { opacity: 1; }
+      52%, 85% { stroke-dashoffset: 0; opacity: 1; }
+      96%, 100% { stroke-dashoffset: 0; opacity: 0; }
+    }
+
+    @keyframes s1PopHeadLeft {
+      0%, 32% { transform: scale(0); opacity: 0; }
+      50%, 85% { transform: scale(1); opacity: 1; }
+      96%, 100% { transform: scale(0.8); opacity: 0; }
+    }
+
+    @keyframes s1PopHeadRight {
+      0%, 36% { transform: scale(0); opacity: 0; }
+      54%, 85% { transform: scale(1); opacity: 1; }
+      96%, 100% { transform: scale(0.8); opacity: 0; }
+    }
+
+    @keyframes s1ShootRay {
+      0%, 44% { stroke-dashoffset: 70; opacity: 0; }
+      48% { opacity: 1; }
+      64%, 85% { stroke-dashoffset: 0; opacity: 1; }
+      96%, 100% { stroke-dashoffset: -70; opacity: 0; }
+    }
+
+    @keyframes s1FadeText {
+      0%, 24% { opacity: 0; transform: translateY(12px); }
+      46%, 85% { opacity: 1; transform: translateY(0); }
+      96%, 100% { opacity: 0; transform: translateY(-4px); }
+    }
+
+    /* ----------------------------------------------------------
+       STYLE 2: Shimmer & Minimal Progress Track
+       ---------------------------------------------------------- */
+    .style-2 .mi-progress-group {
+      opacity: 1 !important;
+    }
+    .style-2 .mi-shimmer-overlay {
+      opacity: 1 !important;
+    }
+
+    /* ----------------------------------------------------------
+       STYLE 3: Gentle Heartbeat & Ray Pulse (Zero Logo Disappearance)
+       ---------------------------------------------------------- */
+    .style-3 .mi-red-group {
+      transform-box: fill-box;
+      transform-origin: center bottom;
+      animation: s3SynergyBounce 2s ease-in-out infinite;
+    }
+
+    .style-3 .mi-ray {
+      transform-box: fill-box;
+      transform-origin: center bottom;
+      animation: s3RayGlow 2s ease-in-out infinite;
+    }
+    .style-3 .mi-ray-1, .style-3 .mi-ray-5 { animation-delay: 0.15s; }
+    .style-3 .mi-ray-2, .style-3 .mi-ray-4 { animation-delay: 0.07s; }
+
+    .style-3 .mi-blue-group {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: s3SubtleBreathe 2s ease-in-out infinite;
+    }
+
+    @keyframes s3SynergyBounce {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-6px) scale(1.025); }
+    }
+
+    @keyframes s3RayGlow {
+      0%, 100% { opacity: 0.55; transform: scale(0.92); }
+      50% { opacity: 1; transform: scale(1.08); }
+    }
+
+    @keyframes s3SubtleBreathe {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.94; }
+    }
+
+    /* Preloader Exit Transition */
+    .preloader-stage {
+      transition: opacity 0.65s cubic-bezier(0.4, 0, 0.2, 1),
+                  transform 0.65s cubic-bezier(0.4, 0, 0.2, 1),
+                  visibility 0.65s;
+    }
+    .preloader-stage.is-loaded {
+      opacity: 0;
+      transform: scale(1.04);
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    /* Custom Scrollbar for Code Modal */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0f172a;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #334155;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between relative select-none">
+
+  <!-- TOP FLOATING STATUS BAR -->
+  <header class="fixed top-4 left-4 right-4 z-40 flex flex-wrap items-center justify-between gap-2 pointer-events-none">
+    <div class="pointer-events-auto bg-white/90 backdrop-blur-md border border-slate-200/80 shadow-sm rounded-2xl px-4 py-2.5 flex items-center gap-3">
+      <span class="flex h-3 w-3 relative">
+        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#EE1D23] opacity-75"></span>
+        <span class="relative inline-flex rounded-full h-3 w-3 bg-[#0048BA]"></span>
+      </span>
+      <div>
+        <h1 class="text-xs sm:text-sm font-bold text-slate-800 tracking-tight">Mercury Infotech — Preloader Studio</h1>
+        <p class="text-[11px] text-slate-500 hidden sm:block">1:1 Exact Vector Geometry (`1536×1024` viewBox) • Responsive SVG</p>
+      </div>
+    </div>
+
+    <!-- Responsive Viewport Switcher & Reference Overlay Toggle -->
+    <div class="pointer-events-auto bg-white/90 backdrop-blur-md border border-slate-200/80 shadow-sm rounded-2xl p-1.5 flex items-center gap-1">
+      <button onclick="setViewport('desktop')" id="vp-desktop" class="vp-btn px-3 py-1.5 rounded-xl text-xs font-semibold bg-[#0048BA] text-white transition flex items-center gap-1.5">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        <span>Desktop</span>
+      </button>
+      <button onclick="setViewport('tablet')" id="vp-tablet" class="vp-btn px-3 py-1.5 rounded-xl text-xs font-semibold text-slate-600 hover:bg-slate-100 transition flex items-center gap-1.5">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M12 18h.01"/></svg>
+        <span>Tablet</span>
+      </button>
+      <button onclick="setViewport('mobile')" id="vp-mobile" class="vp-btn px-3 py-1.5 rounded-xl text-xs font-semibold text-slate-600 hover:bg-slate-100 transition flex items-center gap-1.5">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M12 18h.01"/></svg>
+        <span>Mobile</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- MAIN WORKSPACE / DEVICE FRAME -->
+  <main class="flex-1 flex items-center justify-center p-0 sm:p-6 min-h-screen">
+    <div id="device-frame" class="relative w-full h-screen sm:h-[calc(100vh-3rem)] bg-white sm:rounded-3xl shadow-2xl border border-slate-200/80 overflow-hidden transition-all duration-500 flex items-center justify-center">
+
+      <!-- ========================================================
+           MOCK WEBSITE BEHIND PRELOADER (Revealed when "Simulate Page Load" is clicked)
+           ======================================================== -->
+      <div id="mock-website" class="absolute inset-0 bg-slate-50 flex flex-col justify-between p-6 sm:p-12 overflow-y-auto">
+        <nav class="flex items-center justify-between border-b border-slate-200 pb-4">
+          <div class="flex items-center gap-3">
+            <!-- Mini Static Logo in Navbar -->
+            <svg viewBox="360 30 820 860" class="w-11 h-11">
+              <path fill="#0048BA" d="M 403 696 L 403 264 L 450 264 L 613 428 L 776 264 L 823 264 L 823 696 L 735 696 L 735 434 L 613 556 L 491 434 L 491 696 Z M 957 264 L 1047 264 L 1047 696 L 957 696 Z" />
+              <g fill="none" stroke="#EE1D23" stroke-width="22" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="924" cy="161" r="28" />
+                <circle cx="1080" cy="161" r="28" />
+                <path d="M 896 268 L 896 338 A 16 16 0 0 1 864 338 L 864 266 C 864 224, 882 217, 926 217 C 968 217, 985 196, 985 152 A 17 17 0 0 1 1019 152 C 1019 196, 1036 217, 1078 217 C 1122 217, 1140 224, 1140 266 L 1140 338 A 16 16 0 0 1 1108 338 L 1108 268" />
+              </g>
+            </svg>
+            <span class="font-bold text-lg text-[#0048BA] tracking-tight" style="font-family: 'Jost', sans-serif;">Mercury Infotech</span>
+          </div>
+          <button onclick="togglePageLoad(false)" class="px-4 py-2 rounded-xl bg-[#0048BA] text-white text-xs font-semibold hover:bg-blue-800 transition shadow-sm">
+            ← Bring Preloader Back
+          </button>
+        </nav>
+
+        <div class="my-auto max-w-2xl mx-auto text-center space-y-5 py-8">
+          <span class="inline-block px-3.5 py-1 rounded-full bg-blue-100 text-[#0048BA] text-xs font-semibold">
+            Preloader Transition Complete!
+          </span>
+          <h2 class="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
+            Welcome to <span class="text-[#0048BA]">Mercury Infotech</span>
+          </h2>
+          <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+            This mock landing page demonstrates how the SVG preloader smoothly scales and fades away once <code class="bg-slate-200 px-1.5 py-0.5 rounded text-slate-800">window.onload</code> triggers on your live website.
+          </p>
+          <div class="pt-2 flex flex-wrap justify-center gap-3">
+            <button onclick="togglePageLoad(false)" class="px-6 py-3 rounded-2xl bg-[#EE1D23] hover:bg-red-700 text-white font-semibold text-sm shadow-lg shadow-red-500/25 transition">
+              Replay Preloader Overlay
+            </button>
+            <button onclick="openCodeModal()" class="px-6 py-3 rounded-2xl bg-slate-900 hover:bg-slate-800 text-white font-semibold text-sm transition">
+              Get Embed Code
+            </button>
+          </div>
+        </div>
+
+        <div class="text-center text-xs text-slate-400 pb-20">
+          Mercury Infotech • Responsive SVG Preloader Demo
+        </div>
+      </div>
+
+      <!-- ========================================================
+           LIVE FULL-SCREEN SVG PRELOADER OVERLAY
+           ======================================================== -->
+      <div id="preloader-stage" class="preloader-stage style-1 absolute inset-0 bg-white flex flex-col items-center justify-center z-20 p-6">
+        
+        <!-- THE EXACT 1:1 MERCURY INFOTECH SVG -->
+        <svg id="mercury-svg" class="mi-svg-container" viewBox="0 0 1536 1024" xmlns="http://www.w3.org/2000/svg" aria-label="Mercury Infotech Loading">
+          <defs>
+            <!-- Diagonal Light Shimmer for Style 2 -->
+            <linearGradient id="mi-shimmer-grad" x1="0%" y1="0%" x2="100%" y2="20%">
+              <stop offset="0%" stop-color="rgba(255,255,255,0)" />
+              <stop offset="45%" stop-color="rgba(255,255,255,0)" />
+              <stop offset="50%" stop-color="rgba(255,255,255,0.75)" />
+              <stop offset="55%" stop-color="rgba(255,255,255,0)" />
+              <stop offset="100%" stop-color="rgba(255,255,255,0)" />
+              <animateTransform attributeName="gradientTransform" type="translate" from="-1.2 0" to="1.2 0" dur="1.8s" repeatCount="indefinite" />
+            </linearGradient>
+
+            <!-- Clip Path of Exact Logo Geometry for Shimmer -->
+            <clipPath id="mi-logo-clip">
+              <path d="M 403 696 L 403 264 L 450 264 L 613 428 L 776 264 L 823 264 L 823 696 L 735 696 L 735 434 L 613 556 L 491 434 L 491 696 Z" />
+              <path d="M 957 264 L 1047 264 L 1047 696 L 957 696 Z" />
+            </clipPath>
+          </defs>
+
+          <!-- 1. BLUE GEOMETRY ('M' and 'I' Stem) -->
+          <g class="mi-blue-group">
+            <!-- Exact Letter M -->
+            <path class="mi-blue-shape mi-m-shape"
+                  d="M 403 696 L 403 264 L 450 264 L 613 428 L 776 264 L 823 264 L 823 696 L 735 696 L 735 434 L 613 556 L 491 434 L 491 696 Z" />
+
+            <!-- Exact Letter I Stem -->
+            <path class="mi-blue-shape mi-i-shape"
+                  d="M 957 264 L 1047 264 L 1047 696 L 957 696 Z" />
+          </g>
+
+          <!-- 2. RED HIGH-FIVE / SYNERGY FIGURES ABOVE 'I' -->
+          <g class="mi-red-group mi-red-stroke">
+            <!-- 5 Top Burst Rays -->
+            <line class="mi-ray mi-ray-1" x1="951" y1="118" x2="914" y2="82" />
+            <line class="mi-ray mi-ray-2" x1="976" y1="105" x2="958" y2="55" />
+            <line class="mi-ray mi-ray-3" x1="1002" y1="100" x2="1002" y2="44" />
+            <line class="mi-ray mi-ray-4" x1="1028" y1="105" x2="1046" y2="55" />
+            <line class="mi-ray mi-ray-5" x1="1053" y1="118" x2="1090" y2="82" />
+
+            <!-- 2 Circular Heads -->
+            <circle class="mi-red-head-left" cx="924" cy="161" r="28" />
+            <circle class="mi-red-head-right" cx="1080" cy="161" r="28" />
+
+            <!-- Continuous Outer Loop: Hanging U-Arms, Shoulders & Center High-Five Arch -->
+            <path class="mi-red-body"
+                  d="M 896 268 L 896 338 A 16 16 0 0 1 864 338 L 864 266 C 864 224, 882 217, 926 217 C 968 217, 985 196, 985 152 A 17 17 0 0 1 1019 152 C 1019 196, 1036 217, 1078 217 C 1122 217, 1140 224, 1140 266 L 1140 338 A 16 16 0 0 1 1108 338 L 1108 268" />
+
+            <!-- Inner Crossing Body Arch Resting on Top Corners of Blue 'I' -->
+            <path class="mi-red-arch"
+                  d="M 964 256 C 988 238, 1002 212, 1002 182" />
+            <path class="mi-red-arch"
+                  d="M 1040 256 C 1016 238, 1002 212, 1002 182" />
+          </g>
+
+          <!-- 3. BOTTOM BRAND TEXT: "Mercury Infotech" -->
+          <text x="762" y="848" text-anchor="middle" class="mi-logo-text">Mercury Infotech</text>
+
+          <!-- 4. SHIMMER & PROGRESS BAR (Active in Style 2) -->
+          <rect class="mi-shimmer-overlay" x="380" y="30" width="780" height="680" fill="url(#mi-shimmer-grad)" clip-path="url(#mi-logo-clip)" opacity="0" />
+          
+          <g class="mi-progress-group" opacity="0">
+            <!-- Track Background -->
+            <rect x="532" y="925" width="460" height="10" rx="5" fill="#E2E8F0" />
+            <!-- Animated Blue Bar -->
+            <rect x="532" y="925" width="180" height="10" rx="5" fill="#0048BA">
+              <animate attributeName="x" values="532; 812; 532" dur="1.7s" repeatCount="indefinite" keyTimes="0; 0.5; 1" calcMode="spline" keySplines="0.4 0 0.2 1; 0.4 0 0.2 1" />
+            </rect>
+            <!-- Animated Red Synergy Dot -->
+            <circle cx="762" cy="930" r="8" fill="#EE1D23">
+              <animate attributeName="cx" values="812; 532; 812" dur="1.7s" repeatCount="indefinite" keyTimes="0; 0.5; 1" calcMode="spline" keySplines="0.4 0 0.2 1; 0.4 0 0.2 1" />
+            </circle>
+          </g>
+        </svg>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ==========================================================
+       BOTTOM FLOATING CONTROL DOCK
+       ========================================================== -->
+  <footer class="fixed bottom-4 left-1/2 -translate-x-1/2 z-40 w-[95%] max-w-4xl">
+    <div class="bg-slate-900/95 backdrop-blur-xl text-white border border-slate-700/80 rounded-2xl p-2.5 sm:p-3 shadow-2xl flex flex-wrap items-center justify-between gap-2">
+      
+      <!-- Animation Style Selector -->
+      <div class="flex items-center gap-1 bg-slate-800/90 p-1 rounded-xl w-full sm:w-auto justify-between sm:justify-start">
+        <button onclick="setStyle(1)" id="style-btn-1" class="style-btn flex-1 sm:flex-initial px-3 py-2 rounded-lg text-xs font-semibold bg-[#0048BA] text-white transition">
+          1. Path Draw & Reveal
+        </button>
+        <button onclick="setStyle(2)" id="style-btn-2" class="style-btn flex-1 sm:flex-initial px-3 py-2 rounded-lg text-xs font-semibold text-slate-300 hover:text-white transition">
+          2. Shimmer + Bar
+        </button>
+        <button onclick="setStyle(3)" id="style-btn-3" class="style-btn flex-1 sm:flex-initial px-3 py-2 rounded-lg text-xs font-semibold text-slate-300 hover:text-white transition">
+          3. Ray Pulse (Static Logo)
+        </button>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex items-center gap-2 w-full sm:w-auto justify-end">
+        <button onclick="replayAnimation()" title="Restart Animation" class="px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-medium transition flex items-center gap-1.5">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+          <span>Replay</span>
+        </button>
+
+        <button onclick="togglePageLoad()" id="load-sim-btn" class="px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-emerald-400 text-xs font-semibold transition flex items-center gap-1.5">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+          <span>Test Page Loaded</span>
+        </button>
+
+        <button onclick="downloadStandaloneSVG()" class="px-3.5 py-2 rounded-xl bg-[#EE1D23] hover:bg-red-600 text-white text-xs font-semibold transition flex items-center gap-1.5 shadow-md">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <span>Download .SVG</span>
+        </button>
+
+        <button onclick="openCodeModal()" class="px-4 py-2 rounded-xl bg-[#0048BA] hover:bg-blue-600 text-white text-xs font-semibold transition flex items-center gap-1.5 shadow-md">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          <span>Get Code</span>
+        </button>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ==========================================================
+       CODE EXPORT MODAL (Copy HTML/CSS/SVG Snippet)
+       ========================================================== -->
+  <div id="code-modal" class="fixed inset-0 bg-slate-950/70 backdrop-blur-sm z-50 hidden items-center justify-center p-4 select-text">
+    <div class="bg-slate-900 border border-slate-700 rounded-3xl max-w-3xl w-full overflow-hidden shadow-2xl flex flex-col max-h-[85vh]">
+      <div class="flex items-center justify-between px-6 py-4 border-b border-slate-800">
+        <div>
+          <h3 class="text-white font-bold text-base">Production Website Preloader Code</h3>
+          <p class="text-slate-400 text-xs">Paste this directly inside the <code class="text-blue-400">&lt;body&gt;</code> of your website.</p>
+        </div>
+        <div class="flex items-center gap-2">
+          <button onclick="copyProductionCode()" id="copy-btn" class="px-4 py-2 rounded-xl bg-[#0048BA] hover:bg-blue-600 text-white text-xs font-semibold transition flex items-center gap-1.5">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            <span id="copy-btn-text">Copy Snippet</span>
+          </button>
+          <button onclick="closeCodeModal()" class="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white transition">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="p-5 overflow-y-auto font-mono text-xs text-slate-200 bg-slate-950 leading-relaxed">
+        <pre id="code-output" class="whitespace-pre-wrap break-words"></pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toast" class="fixed top-20 left-1/2 -translate-x-1/2 z-50 bg-slate-900 text-white px-4 py-2.5 rounded-xl shadow-xl border border-slate-700 text-xs font-semibold opacity-0 pointer-events-none transition-all duration-300 flex items-center gap-2">
+    <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+    <span id="toast-msg">Copied to clipboard!</span>
+  </div>
+
+  <script>
+    let currentStyle = 1;
+    let isPageLoaded = false;
+
+    // Switch between the 3 animation styles while keeping the logo 1:1 identical
+    function setStyle(styleNum) {
+      currentStyle = styleNum;
+      const stage = document.getElementById('preloader-stage');
+      stage.classList.remove('style-1', 'style-2', 'style-3');
+      stage.classList.add(`style-${styleNum}`);
+
+      // If preloader was hidden by page load test, bring it back
+      if (isPageLoaded) {
+        togglePageLoad(false);
+      }
+
+      // Update active button state
+      document.querySelectorAll('.style-btn').forEach((btn, idx) => {
+        if (idx + 1 === styleNum) {
+          btn.className = 'style-btn flex-1 sm:flex-initial px-3 py-2 rounded-lg text-xs font-semibold bg-[#0048BA] text-white transition';
+        } else {
+          btn.className = 'style-btn flex-1 sm:flex-initial px-3 py-2 rounded-lg text-xs font-semibold text-slate-300 hover:text-white transition';
+        }
+      });
+
+      replayAnimation();
+    }
+
+    // Restart CSS / SMIL animations cleanly
+    function replayAnimation() {
+      if (isPageLoaded) togglePageLoad(false);
+      const svg = document.getElementById('mercury-svg');
+      const clone = svg.cloneNode(true);
+      svg.parentNode.replaceChild(clone, svg);
+    }
+
+    // Simulate website finished loading transition
+    function togglePageLoad(forceState) {
+      const stage = document.getElementById('preloader-stage');
+      const btn = document.getElementById('load-sim-btn');
+      isPageLoaded = typeof forceState === 'boolean' ? forceState : !isPageLoaded;
+
+      if (isPageLoaded) {
+        stage.classList.add('is-loaded');
+        btn.innerHTML = `
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+          <span>Show Preloader</span>
+        `;
+      } else {
+        stage.classList.remove('is-loaded');
+        replayAnimation();
+        btn.innerHTML = `
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+          <span>Test Page Loaded</span>
+        `;
+      }
+    }
+
+    // Responsive Viewport Tester (Desktop / Tablet / Mobile)
+    function setViewport(mode) {
+      const frame = document.getElementById('device-frame');
+      frame.classList.remove('viewport-tablet', 'viewport-mobile');
+
+      if (mode === 'desktop') {
+        frame.style.maxWidth = '100%';
+        frame.style.maxHeight = 'calc(100vh - 3rem)';
+      } else if (mode === 'tablet') {
+        frame.style.maxWidth = '768px';
+        frame.style.maxHeight = '820px';
+        frame.classList.add('viewport-tablet');
+      } else if (mode === 'mobile') {
+        frame.style.maxWidth = '375px';
+        frame.style.maxHeight = '680px';
+        frame.classList.add('viewport-mobile');
+      }
+
+      ['desktop', 'tablet', 'mobile'].forEach(vp => {
+        const btn = document.getElementById(`vp-${vp}`);
+        if (vp === mode) {
+          btn.className = 'vp-btn px-3 py-1.5 rounded-xl text-xs font-semibold bg-[#0048BA] text-white transition flex items-center gap-1.5';
+        } else {
+          btn.className = 'vp-btn px-3 py-1.5 rounded-xl text-xs font-semibold text-slate-600 hover:bg-slate-100 transition flex items-center gap-1.5';
+        }
+      });
+    }
+
+    // Generate clean standalone code based on currently selected style
+    function generateStandaloneCode() {
+      let styleCSS = '';
+
+      if (currentStyle === 1) {
+        styleCSS = `
+  /* Style 1: Signature Path Draw & Reveal */
+  .mi-m-shape { transform-box: fill-box; transform-origin: center bottom; animation: s1RiseM 2.8s cubic-bezier(0.22, 1, 0.36, 1) infinite; }
+  .mi-i-shape { transform-box: fill-box; transform-origin: center bottom; animation: s1RiseI 2.8s cubic-bezier(0.22, 1, 0.36, 1) infinite; }
+  .mi-red-body { stroke-dasharray: 900; stroke-dashoffset: 900; animation: s1DrawBody 2.8s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
+  .mi-red-arch { stroke-dasharray: 160; stroke-dashoffset: 160; animation: s1DrawArch 2.8s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
+  .mi-red-head-left { transform-box: fill-box; transform-origin: center; animation: s1PopHead 2.8s cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
+  .mi-red-head-right { transform-box: fill-box; transform-origin: center; animation: s1PopHead 2.8s 0.05s cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
+  .mi-ray { stroke-dasharray: 70; stroke-dashoffset: 70; animation: s1ShootRay 2.8s cubic-bezier(0.22, 1, 0.36, 1) infinite; }
+  .mi-logo-text { animation: s1FadeText 2.8s ease-in-out infinite; }
+
+  @keyframes s1RiseM { 0% { opacity: 0; transform: translateY(24px) scaleY(0.92); } 18%, 85% { opacity: 1; transform: translateY(0) scaleY(1); } 96%, 100% { opacity: 0; } }
+  @keyframes s1RiseI { 0%, 6% { opacity: 0; transform: translateY(24px) scaleY(0.92); } 24%, 85% { opacity: 1; transform: translateY(0) scaleY(1); } 96%, 100% { opacity: 0; } }
+  @keyframes s1DrawArch { 0%, 16% { stroke-dashoffset: 160; opacity: 0; } 20% { opacity: 1; } 42%, 85% { stroke-dashoffset: 0; opacity: 1; } 96%, 100% { opacity: 0; } }
+  @keyframes s1DrawBody { 0%, 18% { stroke-dashoffset: 900; opacity: 0; } 22% { opacity: 1; } 52%, 85% { stroke-dashoffset: 0; opacity: 1; } 96%, 100% { opacity: 0; } }
+  @keyframes s1PopHead { 0%, 34% { transform: scale(0); opacity: 0; } 52%, 85% { transform: scale(1); opacity: 1; } 96%, 100% { opacity: 0; } }
+  @keyframes s1ShootRay { 0%, 44% { stroke-dashoffset: 70; opacity: 0; } 48% { opacity: 1; } 64%, 85% { stroke-dashoffset: 0; opacity: 1; } 96%, 100% { stroke-dashoffset: -70; opacity: 0; } }
+  @keyframes s1FadeText { 0%, 24% { opacity: 0; } 46%, 85% { opacity: 1; } 96%, 100% { opacity: 0; } }`;
+      } else if (currentStyle === 2) {
+        styleCSS = `
+  /* Style 2: Static Logo with Shimmer & Progress Track */
+  .mi-progress-group, .mi-shimmer-overlay { opacity: 1 !important; }`;
+      } else {
+        styleCSS = `
+  /* Style 3: Gentle Heartbeat & Ray Pulse */
+  .mi-red-group { transform-box: fill-box; transform-origin: center bottom; animation: s3Bounce 2s ease-in-out infinite; }
+  .mi-ray { transform-box: fill-box; transform-origin: center bottom; animation: s3RayGlow 2s ease-in-out infinite; }
+  @keyframes s3Bounce { 0%, 100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-6px) scale(1.025); } }
+  @keyframes s3RayGlow { 0%, 100% { opacity: 0.55; transform: scale(0.92); } 50% { opacity: 1; transform: scale(1.08); } }`;
+      }
+
+      return `<!-- MERCURY INFOTECH RESPONSIVE SVG PRELOADER -->
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
+<style>
+  #mi-preloader {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+  }
+  #mi-preloader.mi-loaded {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+  .mi-svg-container {
+    width: clamp(220px, 45vw, 500px);
+    height: auto;
+  }
+  .mi-blue-shape { fill: #0048BA; }
+  .mi-red-stroke {
+    fill: none;
+    stroke: #EE1D23;
+    stroke-width: 17;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .mi-logo-text {
+    font-family: 'Jost', 'Futura', sans-serif;
+    font-weight: 500;
+    font-size: 98px;
+    fill: #0048BA;
+    letter-spacing: 0.5px;
+  }${styleCSS}
+</style>
+
+<div id="mi-preloader">
+  <svg class="mi-svg-container" viewBox="0 0 1536 1024" xmlns="http://www.w3.org/2000/svg">
+    <!-- Blue 'M' and 'I' -->
+    <g class="mi-blue-group">
+      <path class="mi-blue-shape mi-m-shape" d="M 403 696 L 403 264 L 450 264 L 613 428 L 776 264 L 823 264 L 823 696 L 735 696 L 735 434 L 613 556 L 491 434 L 491 696 Z" />
+      <path class="mi-blue-shape mi-i-shape" d="M 957 264 L 1047 264 L 1047 696 L 957 696 Z" />
+    </g>
+
+    <!-- Red Celebrating Figures & Rays -->
+    <g class="mi-red-group mi-red-stroke">
+      <line class="mi-ray" x1="951" y1="118" x2="914" y2="82" />
+      <line class="mi-ray" x1="976" y1="105" x2="958" y2="55" />
+      <line class="mi-ray" x1="1002" y1="100" x2="1002" y2="44" />
+      <line class="mi-ray" x1="1028" y1="105" x2="1046" y2="55" />
+      <line class="mi-ray" x1="1053" y1="118" x2="1090" y2="82" />
+      <circle class="mi-red-head-left" cx="924" cy="161" r="28" />
+      <circle class="mi-red-head-right" cx="1080" cy="161" r="28" />
+      <path class="mi-red-body" d="M 896 268 L 896 338 A 16 16 0 0 1 864 338 L 864 266 C 864 224, 882 217, 926 217 C 968 217, 985 196, 985 152 A 17 17 0 0 1 1019 152 C 1019 196, 1036 217, 1078 217 C 1122 217, 1140 224, 1140 266 L 1140 338 A 16 16 0 0 1 1108 338 L 1108 268" />
+      <path class="mi-red-arch" d="M 964 256 C 988 238, 1002 212, 1002 182" />
+      <path class="mi-red-arch" d="M 1040 256 C 1016 238, 1002 212, 1002 182" />
+    </g>
+
+    <!-- Brand Text -->
+    <text x="762" y="848" text-anchor="middle" class="mi-logo-text">Mercury Infotech</text>
+  </svg>
+</div>
+
+<script>
+  window.addEventListener('load', function () {
+    const preloader = document.getElementById('mi-preloader');
+    setTimeout(() => preloader.classList.add('mi-loaded'), 600);
+  });
+<\/script>`;
+    }
+
+    function openCodeModal() {
+      const modal = document.getElementById('code-modal');
+      const output = document.getElementById('code-output');
+      output.textContent = generateStandaloneCode();
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeCodeModal() {
+      const modal = document.getElementById('code-modal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    function copyProductionCode() {
+      const code = generateStandaloneCode();
+      const tempTextArea = document.createElement('textarea');
+      tempTextArea.value = code;
+      document.body.appendChild(tempTextArea);
+      tempTextArea.select();
+      document.execCommand('copy');
+      document.body.removeChild(tempTextArea);
+
+      showToast('Production HTML/SVG code copied to clipboard!');
+      const btnText = document.getElementById('copy-btn-text');
+      btnText.textContent = 'Copied!';
+      setTimeout(() => { btnText.textContent = 'Copy Snippet'; }, 2000);
+    }
+
+    // Download self-contained animated .svg file directly
+    function downloadStandaloneSVG() {
+      const svgContent = `<svg viewBox="0 0 1536 1024" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Jost:wght@500&amp;display=swap');
+      .bg { fill: #FFFFFF; }
+      .mi-blue { fill: #0048BA; }
+      .mi-red {
+        fill: none;
+        stroke: #EE1D23;
+        stroke-width: 17;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .mi-text {
+        font-family: 'Jost', 'Futura', sans-serif;
+        font-weight: 500;
+        font-size: 98px;
+        fill: #0048BA;
+        letter-spacing: 0.5px;
+      }
+      .m-anim { transform-box: fill-box; transform-origin: center bottom; animation: rise 2.8s cubic-bezier(0.22, 1, 0.36, 1) infinite; }
+      .body-anim { stroke-dasharray: 900; stroke-dashoffset: 900; animation: drawBody 2.8s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
+      .arch-anim { stroke-dasharray: 160; stroke-dashoffset: 160; animation: drawArch 2.8s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
+      .head-anim { transform-box: fill-box; transform-origin: center; animation: popHead 2.8s cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
+      .ray-anim { stroke-dasharray: 70; stroke-dashoffset: 70; animation: shootRay 2.8s cubic-bezier(0.22, 1, 0.36, 1) infinite; }
+      @keyframes rise { 0% { opacity: 0; transform: translateY(20px); } 20%, 85% { opacity: 1; transform: translateY(0); } 96%, 100% { opacity: 0; } }
+      @keyframes drawArch { 0%, 16% { stroke-dashoffset: 160; opacity: 0; } 20% { opacity: 1; } 42%, 85% { stroke-dashoffset: 0; opacity: 1; } 96%, 100% { opacity: 0; } }
+      @keyframes drawBody { 0%, 18% { stroke-dashoffset: 900; opacity: 0; } 22% { opacity: 1; } 52%, 85% { stroke-dashoffset: 0; opacity: 1; } 96%, 100% { opacity: 0; } }
+      @keyframes popHead { 0%, 34% { transform: scale(0); opacity: 0; } 52%, 85% { transform: scale(1); opacity: 1; } 96%, 100% { opacity: 0; } }
+      @keyframes shootRay { 0%, 44% { stroke-dashoffset: 70; opacity: 0; } 48% { opacity: 1; } 64%, 85% { stroke-dashoffset: 0; opacity: 1; } 96%, 100% { stroke-dashoffset: -70; opacity: 0; } }
+    </style>
+  </defs>
+  <rect class="bg" width="1536" height="1024" />
+  <g class="mi-blue m-anim">
+    <path d="M 403 696 L 403 264 L 450 264 L 613 428 L 776 264 L 823 264 L 823 696 L 735 696 L 735 434 L 613 556 L 491 434 L 491 696 Z" />
+    <path d="M 957 264 L 1047 264 L 1047 696 L 957 696 Z" />
+  </g>
+  <g class="mi-red">
+    <line class="ray-anim" x1="951" y1="118" x2="914" y2="82" />
+    <line class="ray-anim" x1="976" y1="105" x2="958" y2="55" />
+    <line class="ray-anim" x1="1002" y1="100" x2="1002" y2="44" />
+    <line class="ray-anim" x1="1028" y1="105" x2="1046" y2="55" />
+    <line class="ray-anim" x1="1053" y1="118" x2="1090" y2="82" />
+    <circle class="head-anim" cx="924" cy="161" r="28" />
+    <circle class="head-anim" cx="1080" cy="161" r="28" />
+    <path class="body-anim" d="M 896 268 L 896 338 A 16 16 0 0 1 864 338 L 864 266 C 864 224, 882 217, 926 217 C 968 217, 985 196, 985 152 A 17 17 0 0 1 1019 152 C 1019 196, 1036 217, 1078 217 C 1122 217, 1140 224, 1140 266 L 1140 338 A 16 16 0 0 1 1108 338 L 1108 268" />
+    <path class="arch-anim" d="M 964 256 C 988 238, 1002 212, 1002 182" />
+    <path class="arch-anim" d="M 1040 256 C 1016 238, 1002 212, 1002 182" />
+  </g>
+  <text x="762" y="848" text-anchor="middle" class="mi-text m-anim">Mercury Infotech</text>
+</svg>`;
+
+      const blob = new Blob([svgContent], { type: 'image/svg+xml;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'mercury-infotech-preloader.svg';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      showToast('Downloaded mercury-infotech-preloader.svg!');
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toast-msg').textContent = msg;
+      toast.classList.remove('opacity-0');
+      toast.classList.add('opacity-100');
+      setTimeout(() => {
+        toast.classList.remove('opacity-100');
+        toast.classList.add('opacity-0');
+      }, 2400);
+    }
+  </script>
+</body>
+</html>

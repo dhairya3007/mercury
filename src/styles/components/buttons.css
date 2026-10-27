@@ -1,0 +1,188 @@
+/* Common button component (.cmn-btn) matching original Creasoft signature aesthetic */
+.cmn-btn {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Base button styles applied when .cmn-btn is the button itself OR when an <a> / <button> is inside .cmn-btn */
+a.cmn-btn,
+button.cmn-btn,
+.cmn-btn a,
+.cmn-btn button {
+  position: relative;
+  display: inline-block;
+  background-color: #000000;
+  border-radius: 5px;
+  min-width: 170px;
+  font-family: var(--font-family-base);
+  font-weight: 700;
+  font-size: 16px;
+  text-align: center;
+  color: #FFFFFF !important;
+  padding: 15px 32px;
+  border: 1px solid #000000;
+  overflow: hidden;
+  z-index: 1;
+  transition: all 0.5s ease-out 0s;
+  vertical-align: top;
+  cursor: pointer;
+  text-decoration: none;
+  line-height: 1.5;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  a.cmn-btn,
+  button.cmn-btn,
+  .cmn-btn a,
+  .cmn-btn button {
+    min-width: 140px;
+    font-size: 14px;
+    padding: 12px 22px;
+  }
+}
+
+/* Secondary Button Layout (Transparent with light border) */
+a.cmn-btn.layout-two,
+button.cmn-btn.layout-two,
+.cmn-btn.layout-two a,
+.cmn-btn.layout-two button {
+  background-color: transparent !important;
+  border: 1px solid #E4E4E4 !important;
+  color: #FFFFFF !important;
+}
+
+/* Skewed hover background slide with #75DAB4 */
+a.cmn-btn::after,
+button.cmn-btn::after,
+.cmn-btn a::after,
+.cmn-btn button::after {
+  position: absolute;
+  content: "";
+  display: block;
+  left: 15%;
+  right: -20%;
+  top: -4%;
+  height: 150%;
+  width: 150%;
+  bottom: 0;
+  background-color: var(--color-primary, #75DAB4);
+  transform: skewX(45deg) scale(0, 1);
+  z-index: -1;
+  transition: all 0.5s ease-out 0s;
+}
+
+a.cmn-btn:hover,
+button.cmn-btn:hover,
+.cmn-btn:hover a,
+.cmn-btn:hover button {
+  color: #000000 !important;
+  border-color: var(--color-primary, #75DAB4) !important;
+}
+
+a.cmn-btn:hover::after,
+button.cmn-btn:hover::after,
+.cmn-btn:hover a::after,
+.cmn-btn:hover button::after {
+  transform: skewX(45deg) scale(1, 1);
+}
+
+/* Corner decorative bracket lines */
+.cmn-btn .line-1 {
+  position: absolute;
+  right: 8px;
+  top: 7px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.cmn-btn .line-1::before {
+  position: absolute;
+  content: "";
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  width: 25px;
+  right: 0;
+  top: 0;
+  transition: all 0.5s ease-out 0s;
+}
+
+.cmn-btn .line-1::after {
+  position: absolute;
+  content: "";
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  height: 25px;
+  right: 0;
+  top: 0;
+  transition: all 0.5s ease-out 0s;
+}
+
+.cmn-btn .line-2 {
+  position: absolute;
+  left: 8px;
+  bottom: 8px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.cmn-btn .line-2::before {
+  position: absolute;
+  content: "";
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  height: 25px;
+  left: 0;
+  bottom: 0;
+  transition: all 0.5s ease-out 0s;
+}
+
+.cmn-btn .line-2::after {
+  position: absolute;
+  content: "";
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  width: 25px;
+  left: 0;
+  bottom: 0;
+  transition: all 0.5s ease-out 0s;
+}
+
+.cmn-btn:hover .line-1::before,
+.cmn-btn:hover .line-1::after,
+.cmn-btn:hover .line-2::before,
+.cmn-btn:hover .line-2::after {
+  border-color: #000000;
+  opacity: 0.6;
+}
+
+/* Buttons group wrapper */
+.buttons,
+.hero-buttons {
+  margin-top: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .buttons,
+  .hero-buttons {
+    margin-top: 25px;
+    gap: 12px;
+  }
+}
+
+/* Primary simple solid button */
+.btn-primary {
+  display: inline-block;
+  background-color: var(--color-primary);
+  color: var(--color-black);
+  font-weight: 700;
+  padding: 12px 28px;
+  border-radius: var(--radius-sm);
+  transition: background-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-hover);
+  transform: translateY(-2px);
+}

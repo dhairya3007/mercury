@@ -1,0 +1,232 @@
+/* ==========================================================
+   Mercury Infotech - Preloaders & Page Transition Loaders
+   ========================================================== */
+
+/* 1. Full-Screen Backdrop (Used by both Preloader & PageLoader) */
+.preloader-overlay,
+.page-loader-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #FFFFFF;
+  z-index: 9999999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  overflow: hidden;
+  user-select: none;
+  pointer-events: auto;
+}
+
+.page-loader-overlay {
+  z-index: 9999998;
+}
+
+/* 2. Responsive Vector SVG Container */
+.mi-svg-container {
+  width: clamp(230px, 42vw, 460px);
+  max-width: 90vw;
+  height: auto;
+  display: block;
+  user-select: none;
+  filter: drop-shadow(0 12px 35px rgba(0, 72, 186, 0.09));
+}
+
+@media (max-width: 991px) {
+  .mi-svg-container {
+    width: 310px;
+  }
+}
+
+@media (max-width: 575px) {
+  .mi-svg-container {
+    width: 230px;
+  }
+}
+
+.mi-blue-shape {
+  fill: #0048BA;
+}
+
+.mi-red-stroke {
+  fill: none;
+  stroke: #EE1D23;
+  stroke-width: 17;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.mi-logo-text {
+  font-family: 'Jost', 'Futura', 'Tw Cen MT', sans-serif;
+  font-weight: 500;
+  font-size: 98px;
+  fill: #0048BA;
+  letter-spacing: 0.5px;
+}
+
+/* ==========================================================
+   PRELOADER (First Visit / Hard Refresh)
+   Signature Path Draw & Reveal Animation
+   ========================================================== */
+.preloader-overlay .mi-m-shape {
+  transform-box: fill-box;
+  transform-origin: center bottom;
+  animation: s1RiseM 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.preloader-overlay .mi-i-shape {
+  transform-box: fill-box;
+  transform-origin: center bottom;
+  animation: s1RiseI 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.12s forwards;
+  opacity: 0;
+}
+
+.preloader-overlay .mi-red-body {
+  stroke-dasharray: 900;
+  stroke-dashoffset: 900;
+  animation: s1DrawBody 1.1s cubic-bezier(0.35, 0, 0.2, 1) 0.35s forwards;
+  opacity: 0;
+}
+
+.preloader-overlay .mi-red-arch {
+  stroke-dasharray: 160;
+  stroke-dashoffset: 160;
+  animation: s1DrawArch 0.9s cubic-bezier(0.35, 0, 0.2, 1) 0.35s forwards;
+  opacity: 0;
+}
+
+.preloader-overlay .mi-red-head-left {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: s1PopHead 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.8s forwards;
+  opacity: 0;
+}
+
+.preloader-overlay .mi-red-head-right {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: s1PopHead 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.9s forwards;
+  opacity: 0;
+}
+
+.preloader-overlay .mi-ray {
+  stroke-dasharray: 70;
+  stroke-dashoffset: 70;
+  opacity: 0;
+}
+.preloader-overlay .mi-ray-1 { animation: s1ShootRay 0.55s cubic-bezier(0.22, 1, 0.36, 1) 1.05s forwards; }
+.preloader-overlay .mi-ray-2 { animation: s1ShootRay 0.55s cubic-bezier(0.22, 1, 0.36, 1) 1.12s forwards; }
+.preloader-overlay .mi-ray-3 { animation: s1ShootRay 0.55s cubic-bezier(0.22, 1, 0.36, 1) 1.19s forwards; }
+.preloader-overlay .mi-ray-4 { animation: s1ShootRay 0.55s cubic-bezier(0.22, 1, 0.36, 1) 1.26s forwards; }
+.preloader-overlay .mi-ray-5 { animation: s1ShootRay 0.55s cubic-bezier(0.22, 1, 0.36, 1) 1.33s forwards; }
+
+.preloader-overlay .mi-logo-text {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: s1FadeText 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.85s forwards;
+  opacity: 0;
+}
+
+@keyframes s1RiseM {
+  0% { opacity: 0; transform: translateY(32px) scaleY(0.9); }
+  100% { opacity: 1; transform: translateY(0) scaleY(1); }
+}
+
+@keyframes s1RiseI {
+  0% { opacity: 0; transform: translateY(32px) scaleY(0.9); }
+  100% { opacity: 1; transform: translateY(0) scaleY(1); }
+}
+
+@keyframes s1DrawArch {
+  0% { stroke-dashoffset: 160; opacity: 0; }
+  15% { opacity: 1; }
+  100% { stroke-dashoffset: 0; opacity: 1; }
+}
+
+@keyframes s1DrawBody {
+  0% { stroke-dashoffset: 900; opacity: 0; }
+  15% { opacity: 1; }
+  100% { stroke-dashoffset: 0; opacity: 1; }
+}
+
+@keyframes s1PopHead {
+  0% { transform: scale(0); opacity: 0; }
+  60% { transform: scale(1.15); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes s1ShootRay {
+  0% { stroke-dashoffset: 70; opacity: 0; }
+  25% { opacity: 1; }
+  100% { stroke-dashoffset: 0; opacity: 1; }
+}
+
+@keyframes s1FadeText {
+  0% { opacity: 0; transform: translateY(16px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================================================
+   PAGE LOADER (Route Switching Between Pages)
+   STYLE 3: Ray Pulse (Static Logo - Zero Disappearance)
+   ========================================================== */
+.page-loader-overlay .mi-static-pulse {
+  display: block;
+}
+
+.page-loader-overlay .mi-red-group {
+  transform-box: fill-box;
+  transform-origin: center bottom;
+  animation: s3SynergyBounce 2.6s ease-in-out infinite;
+}
+
+.page-loader-overlay .mi-ray {
+  transform-box: fill-box;
+  transform-origin: center bottom;
+  animation: s3RayGlow 2.6s ease-in-out infinite;
+  opacity: 0.6;
+}
+.page-loader-overlay .mi-ray-1,
+.page-loader-overlay .mi-ray-5 { animation-delay: 0.22s; }
+.page-loader-overlay .mi-ray-2,
+.page-loader-overlay .mi-ray-4 { animation-delay: 0.12s; }
+.page-loader-overlay .mi-ray-3 { animation-delay: 0s; }
+
+.page-loader-overlay .mi-blue-group {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: s3SubtleBreathe 2.6s ease-in-out infinite;
+}
+
+@keyframes s3SynergyBounce {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-5px) scale(1.025);
+  }
+}
+
+@keyframes s3RayGlow {
+  0%, 100% {
+    opacity: 0.45;
+    transform: scale(0.92);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 6px rgba(238, 29, 35, 0.45));
+  }
+}
+
+@keyframes s3SubtleBreathe {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.94;
+  }
+}

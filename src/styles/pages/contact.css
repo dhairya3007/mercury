@@ -1,0 +1,168 @@
+/* ==========================================================================
+   Mercury Infotech - Contact Page Styles
+   ========================================================================== */
+
+.contact-page-section {
+  padding: 70px 0;
+  position: relative;
+  background-color: var(--color-bg-primary);
+}
+
+.contact-info-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+  margin-bottom: 45px;
+}
+
+.contact-info-card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-lg);
+  padding: 35px 25px;
+  text-align: center;
+  transition: all var(--transition-normal);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contact-info-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--color-accent);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.contact-info-card .icon-box {
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  background: rgba(117, 218, 180, 0.1);
+  color: var(--color-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  transition: all var(--transition-fast);
+}
+
+.contact-info-card:hover .icon-box {
+  background: var(--color-accent);
+  color: var(--color-bg-primary);
+}
+
+.contact-info-card h4 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-bottom: 12px;
+}
+
+.contact-info-card p,
+.contact-info-card a {
+  font-size: 0.95rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  transition: color var(--transition-fast);
+}
+
+.contact-info-card a:hover {
+  color: var(--color-accent);
+}
+
+.contact-main-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: stretch;
+}
+
+.contact-form-container {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-lg);
+  padding: 45px 40px;
+}
+
+.contact-form-container .form-header {
+  margin-bottom: 30px;
+}
+
+.contact-form-container .sub-title {
+  color: var(--color-accent);
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  display: inline-block;
+  margin-bottom: 8px;
+}
+
+.contact-form-container .section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.contact-map-wrapper {
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  min-height: 480px;
+  position: relative;
+}
+
+.contact-map-wrapper iframe {
+  width: 100%;
+  height: 100%;
+  min-height: 480px;
+  border: 0;
+  display: block;
+}
+
+@media (max-width: 1199px) {
+  .contact-info-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 991px) {
+  .contact-page-section {
+    padding: 45px 0;
+  }
+  .contact-main-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  .contact-info-cards-grid {
+    grid-template-columns: 1fr;
+    margin-bottom: 30px;
+    gap: 16px;
+  }
+  .contact-form-container {
+    padding: 30px 20px;
+  }
+  .contact-map-wrapper,
+  .contact-map-wrapper iframe {
+    min-height: 340px;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-page-section {
+    padding: 32px 0;
+  }
+  .contact-info-card {
+    padding: 22px 18px;
+  }
+  .contact-info-card .icon-box {
+    width: 50px;
+    height: 50px;
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+  }
+  .contact-form-container {
+    padding: 22px 16px;
+  }
+}

@@ -1,0 +1,151 @@
+/* Form Inputs & Elements */
+.form-group {
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.form-control {
+  width: 100%;
+  padding: 16px 20px;
+  background-color: #F8F9FA;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-sm);
+  color: var(--color-text-main);
+  font-family: var(--font-family-base);
+  font-size: 1rem;
+  transition: all var(--transition-fast);
+}
+
+.form-control:focus {
+  background-color: var(--color-white);
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-primary-light);
+}
+
+textarea.form-control {
+  min-height: 140px;
+  resize: vertical;
+}
+
+.form-error-msg {
+  color: #E63946;
+  font-size: 0.85rem;
+  margin-top: 6px;
+  display: block;
+}
+
+.form-success-alert {
+  padding: 16px 20px;
+  background-color: var(--color-primary-light);
+  border: 1px solid var(--color-primary);
+  color: var(--color-dark-bg);
+  border-radius: var(--radius-sm);
+  margin-bottom: 25px;
+  font-weight: 500;
+}
+
+/* Sidebar Question Form on FAQ page */
+.questions-form {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-md);
+  padding: 35px 25px;
+  box-shadow: var(--shadow-card);
+}
+
+.questions-form h4 {
+  font-size: 1.25rem;
+  margin-bottom: 25px;
+  text-transform: uppercase;
+  color: var(--color-dark-bg);
+  letter-spacing: 0.5px;
+}
+
+/* Subscribe Newsletter Banner */
+.subscribe-newsletter {
+  background-color: var(--color-dark-bg);
+  border-radius: var(--radius-lg);
+  padding: 60px 50px;
+  color: var(--color-white);
+  position: relative;
+  overflow: hidden;
+}
+
+.subscribe-newsletter::before {
+  content: "";
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--color-primary-glow) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.subscribe-cnt span {
+  color: var(--color-primary);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+}
+
+.subscribe-cnt h3 {
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  color: var(--color-white);
+  margin-bottom: 5px;
+}
+
+.subscribe-cnt strong {
+  font-size: clamp(2rem, 3.5vw, 2.75rem);
+  color: var(--color-primary);
+  font-weight: 800;
+}
+
+.subscribe-form-wrap form {
+  display: flex;
+  gap: 15px;
+}
+
+.subscribe-form-wrap input[type="email"] {
+  flex-grow: 1;
+  padding: 16px 24px;
+  border-radius: var(--radius-sm);
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--color-white);
+}
+
+.subscribe-form-wrap input[type="email"]:focus {
+  border-color: var(--color-primary);
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
+.subscribe-form-wrap input[type="submit"],
+.subscribe-form-wrap button {
+  padding: 16px 36px;
+  background-color: var(--color-primary);
+  color: var(--color-black);
+  font-weight: 700;
+  border-radius: var(--radius-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.subscribe-form-wrap input[type="submit"]:hover,
+.subscribe-form-wrap button:hover {
+  background-color: var(--color-primary-hover);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .subscribe-newsletter {
+    padding: 40px 25px;
+  }
+  .subscribe-form-wrap form {
+    flex-direction: column;
+  }
+}
