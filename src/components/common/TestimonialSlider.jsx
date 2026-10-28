@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef, useCallback } from "react";
 export default function TestimonialSlider({
   items,
   autoPlay = true,
-  autoPlayInterval = 4000
+  autoPlayInterval = 2400
 }) {
   const L = items.length;
   // 5x copies provide ample buffer in both directions (indices 0 to 5*L-1)
@@ -163,7 +163,7 @@ export default function TestimonialSlider({
   const transition = isDragging
     ? "none"
     : isTransitioning
-    ? "transform 0.45s cubic-bezier(0.25, 1, 0.5, 1)"
+    ? "transform 0.3s cubic-bezier(0.25, 1, 0.5, 1)"
     : "none";
 
   return (

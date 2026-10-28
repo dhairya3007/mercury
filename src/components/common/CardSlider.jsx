@@ -5,7 +5,7 @@ export default function CardSlider({
   items,
   linkPrefix = "/services",
   autoPlay = true,
-  autoPlayInterval = 3800
+  autoPlayInterval = 2200
 }) {
   const L = items.length;
   // 5x copies provide ample buffer in both directions (indices 0 to 5*L-1)
@@ -177,7 +177,7 @@ export default function CardSlider({
   const transition = isDragging
     ? "none"
     : isTransitioning
-    ? "transform 0.45s cubic-bezier(0.25, 1, 0.5, 1)"
+    ? "transform 0.28s cubic-bezier(0.25, 1, 0.5, 1)"
     : "none";
 
   return (

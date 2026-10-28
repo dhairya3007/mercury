@@ -53,7 +53,8 @@ export default function Home() {
               transition={{ duration: 0.8 }}
             >
               <h1>
-                Building Digital Success For <span>Businesses.</span>
+                Building Digital<br />
+                Success For <span>Businesses.</span>
               </h1>
               <p>{siteContent.description}</p>
               <div className="buttons">
