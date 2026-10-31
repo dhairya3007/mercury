@@ -4,9 +4,9 @@ export const siteContent = {
   tagline: "Building Digital Success For Businesses.",
   description: "From custom websites to business automation, we build technology that is user-friendly, scalable, and aligned with your business goals. No unnecessary complexity. The tech industry already produces enough of that to power three existential crises a week.",
   aboutShort: "Empowering businesses with modern technology and result-driven digital solutions built for today’s competitive market.",
-  
+
   contact: {
-    email: "Info@mercuryinfotech.co.uk",
+    email: "mercuryinfotechuk@gmail.com",
     secondaryEmail: "imercuryinfotechuk@gmail.com",
     phone: "+44 7442 974622",
     address: "11, Hillrise Court, 135 Kenton Rd, Harrow HA3 0AZ, United Kingdom",
